@@ -1,0 +1,3 @@
+select_pubs = df_fin.nlargest(10, 'Global_Sales') #selecting top 10 largest global sales values
+df_select = df_fin[df_fin['Publisher'].isin(select_pubs['Publisher'])].reset_index()
+df_select
