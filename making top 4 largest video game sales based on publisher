@@ -1,0 +1,19 @@
+plt.bar(df_select['Year'], df_select['Global_Sales'], alpha= 0.5)
+
+color_maps = plt.colormaps['tab10']
+
+for i, pubs in enumerate(df_select['Publisher'].unique()):
+    subset = df_select[df_select['Publisher'] == pubs]
+    plt.bar(subset['Year'], subset['Global_Sales'], color= color_maps(i), alpha= 1, label= f'Publisher: {pubs}')
+    if pubs == 'Activision':
+        plt.plot(subset['Year'], subset['Global_Sales'], color='blue', label= f'Publisher: {pubs}', marker= 'o')
+    else:
+        plt.bar(subset['Year'], subset['Global_Sales'], color= color_maps(i), label= f'Publisher: {pubs}')
+
+    
+    
+plt.xlabel('Year', labelpad= 10, size= 14)
+plt.ylabel('Global Sales(in million)', labelpad= 10, size= 14)
+plt.title('Penjualan Video Game dari tahun 2010 hingga 2015')
+plt.legend(loc='right', bbox_to_anchor=(1.6, 0.5))
+plt.show()
